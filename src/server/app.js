@@ -7,10 +7,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
-const index = require('../routes/index');
+const index = require('../routes/trivia');
 
 const app = express();
-app.use(favicon(path.join(__dirname, '../../dist/', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, '../../dist/', 'favicon.ico')));
 
 // Uncomment when launching dev site
 // app.use(auth);

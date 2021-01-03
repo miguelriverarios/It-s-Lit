@@ -2,11 +2,11 @@
 require('dotenv').config();
 var path = require('path');
 var fs = require('fs');
-var ssl = {
-  cert: fs.readFileSync(path.join(__dirname, '../../ssl', 'cert.crt'), 'utf8'),
-  key: fs.readFileSync(path.join(__dirname, '../../ssl', 'server.key'), 'utf8'),
-  ca: fs.readFileSync(path.join(__dirname, '../../ssl', 'gd_bundle.crt'), 'utf8')
-};
+// var ssl = {
+//   cert: fs.readFileSync(path.join(__dirname, '../../ssl', 'cert.crt'), 'utf8'),
+//   key: fs.readFileSync(path.join(__dirname, '../../ssl', 'server.key'), 'utf8'),
+//   ca: fs.readFileSync(path.join(__dirname, '../../ssl', 'gd_bundle.crt'), 'utf8')
+// };
 
 /**
  * Module dependencies.

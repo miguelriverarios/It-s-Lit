@@ -1,0 +1,22 @@
+@use "utilities";
+
+/** Vedor Styles (ie Material Design, Slick, etc **/
+@use "vendors";
+
+/** Vedor Styles (ie Material Design, Slick, etc **/
+@use "vendors-extensions";
+
+/** Basic Styles (ie typography, global, etc **/
+@use "base";
+
+/** Layouts (ie header, footer, navigation, etc) **/
+@use "layouts";
+
+/** Layouts (ie header, footer, navigation, etc) **/
+@use "themes";
+
+/** Pages (if any pages differ from the overall theme) **/
+@use "pages";
+
+/** Components (reusable elements, ie buttons, etc) **/
+@use "components";

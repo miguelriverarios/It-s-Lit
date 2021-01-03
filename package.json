@@ -1,0 +1,51 @@
+{
+  "name": "boilerplate",
+  "description": "This contains the minimum setup for a project",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "env NODE_ENV=production node ./src/bin/www",
+    "gulp": "gulp start"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.1.0",
+    "browser-sync": "^2.26.7",
+    "cssnano": "^4.1.10",
+    "dotenv": "^8.2.0",
+    "fs": "^0.0.1-security",
+    "gulp": "4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-dart-sass": "^1.0.2",
+    "gulp-nodemon": "^2.5.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-replace": "^1.0.0",
+    "imports-loader": "^1.2.0",
+    "morgan": "~1.10.0",
+    "normalize-scss": "^7.0.1",
+    "path": "^0.12.7",
+    "pm2": "^4.5.1",
+    "postcss": "^8.2.1",
+    "webpack": "^5.11.0",
+    "webpack-stream": "^6.1.1"
+  },
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "~1.4.3",
+    "debug": "~4.3.1",
+    "express": "~4.17.1",
+    "express-handlebars": "^5.2.0",
+    "googleapis": "^66.0.0",
+    "http-errors": "~1.8.0",
+    "https": "^1.0.0",
+    "jquery": "^3.5.1",
+    "jquery-ui": "^1.12.1",
+    "js-cookie": "^2.2.1",
+    "querystring": "^0.2.0",
+    "serve-favicon": "^2.5.0",
+    "url": "^0.11.0"
+  }
+}

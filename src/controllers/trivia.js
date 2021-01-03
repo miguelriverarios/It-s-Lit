@@ -28,6 +28,8 @@ const events = async (req, res) => {
 
         options.payload = payload;
 
+        console.log(options);
+
         res.render(pageType, options);
 
     } catch (err) {

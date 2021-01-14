@@ -14,8 +14,6 @@ const events = require('../routes/events');
 const reviews = require('../routes/reviews');
 const whoWeAre = require('../routes/whoWeAre');
 
-console.log(path.join(__dirname, '../../dist/', 'favicon.ico'));
-
 const app = express();
 app.use(favicon(path.join(__dirname, '../../dist/', 'favicon.ico')));
 

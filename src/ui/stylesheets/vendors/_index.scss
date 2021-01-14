@@ -1,0 +1,26 @@
+@use "utilities" as util;
+
+/** Materialize CSS **/
+@forward "materialize-css/sass/materialize.scss";
+
+/** Font Awesome **/
+@forward '@fortawesome/fontawesome-free/scss/fontawesome';
+// with (
+//$fa-font-path: ../../fonts/webfonts/
+//);
+@forward "@fortawesome/fontawesome-free/scss/fontawesome" as fa-*;
+@forward "@fortawesome/fontawesome-free/scss/brands" as b-*;
+@forward "@fortawesome/fontawesome-free/scss/regular" as r-*;
+@forward "@fortawesome/fontawesome-free/scss/solid" as s-*;
+@forward "@fortawesome/fontawesome-free/scss/v4-shims" as v4-*;
+
+@forward "@material/tab-bar/mdc-tab-bar";
+@forward "@material/tab-scroller/mdc-tab-scroller";
+@forward "@material/tab-indicator/mdc-tab-indicator";
+@forward "@material/tab-indicator" as tab-indicator-*;
+@forward "@material/tab/mdc-tab";
+@forward "@material/tab" as tab-*;
+
+/** Slick **/
+@forward "slick-carousel/slick/slick";
+@forward "slick-theme";

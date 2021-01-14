@@ -1,0 +1,30 @@
+@use "../../utilities" as util;
+
+.sidenav-overlay {
+    z-index: 1200;
+}
+
+.sidenav li>a:hover {
+    background-color: rgba(util.$var-secondary-color, 0.05);
+}
+
+#slide-out {
+    z-index: 1500;
+    background-color: util.$var-background-color;
+
+    a {
+        font-weight: bolder;
+        text-transform: uppercase;
+    }
+
+    .user-view {
+        height: 175px;
+        .background {
+            height: 175px;
+
+            img {
+                height: 500px;
+            }
+        }
+    }
+}

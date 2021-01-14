@@ -1,0 +1,105 @@
+@use "../../utilities" as util;
+@use "../../vendors" as vend;
+
+// Font families
+* {
+    font-family: "Avenir", Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav a {
+    font-family: "Bookman Old Style", Times, serif;
+}
+
+.initial-letter {
+    font-family: Royal;
+}
+
+// Font sizes
+html {
+    font-size: 100%;
+}
+
+.initial-letter {
+    font-size: 10rem;
+}
+
+.small-text {
+    font-size: 0.6rem;
+}
+
+.small-medium-text {
+    font-size: 1.3rem;
+}
+
+.medium-text {
+    font-size: 1.8rem;
+}
+
+.large-text {
+    font-size: 6rem;
+}
+
+// Font colors
+a,
+i,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+    color: util.$var-on-background-color;
+}
+
+.sidenav li>a {
+    color: util.$var-on-background-color;
+}
+
+.on-dark-background-color {
+    color: util.$var-on-secondary-color;
+
+    a,
+    i,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    span {
+        color: util.$var-on-secondary-color;
+    }
+}
+
+.secondary-background {
+    a {
+        i {
+            &:hover {
+                color: util.$var-on-background-color;
+            }
+        }
+    }
+}
+
+//Font styles
+a {
+    cursor: pointer;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.link {
+    text-decoration: underline;
+    color: util.$var-primary-color;
+}

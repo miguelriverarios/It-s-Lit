@@ -1,0 +1,175 @@
+@use "../../utilities" as util;
+@use "../../vendors" as vend;
+
+.hero-home {
+    .hero-overlay {
+        position: absolute;
+        width: 100vw;
+        max-width: 100%;
+        height: 100vh;
+        opacity: 0.4;
+        background-color: grey;
+        z-index: 1;
+    }
+
+    img {
+        object-fit: cover;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .chevron-down {
+        position: absolute;
+        bottom: 0.2em;
+        font-size: 1.5em;
+        color: purple;
+        left: 50%;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        transform-origin: bottom;
+        animation-name: bounce-1;
+        animation-timing-function: linear;
+        z-index: 1000;
+        height: 100px;
+        width: 50px;
+        @include util.mix-flex($align: flex-end);
+    }
+
+    @keyframes bounce-1 {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-33px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    article {
+        position: absolute;
+        z-index: 3;
+        @include util.mix-responsive(
+            "bottom",
+            0,
+            (
+                "m": 6em,
+                "ml": 7em,
+                "l": 10em,
+                "xl": 10em,
+            )
+        );
+        right: 7em;
+        background-color: rgba(util.$var-primary-color, 0.6);
+        @include util.mix-responsive(
+            "width",
+            0,
+            (
+                "m": 30%,
+                "ml": 25%,
+                "l": 20%,
+                "xl": 20%,
+            )
+        );
+
+        &:after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+
+        main {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-transform: uppercase;
+            padding: 0.5em 3em;
+            color: util.$var-on-primary-color;
+
+            h1 {
+                @include util.mix-responsive(
+                    "font-size",
+                    1em,
+                    (
+                        "xs": 1em,
+                        "s": 2em,
+                        "m": 3em,
+                        "ml": 3em,
+                        "l": 3em,
+                        "l2": 4em,
+                        "xl": 4em,
+                    )
+                );
+            }
+
+            .hero-tagline-text--selected {
+                font-weight: bolder;
+                color: util.$var-on-primary-color;
+            }
+        }
+    }
+
+    .hero-tagline-outline {
+        z-index: 2;
+        border: 0.5em solid util.$var-background-color;
+        @include util.mix-responsive(
+            "display",
+            none,
+            (
+                "m": block,
+            )
+        );
+        @include util.mix-responsive(
+            "width",
+            0,
+            (
+                "m": 30%,
+                "ml": 25%,
+                "l": 20%,
+                "xl": 20%,
+            )
+        );
+        position: absolute;
+        @include util.mix-responsive(
+            "bottom",
+            0,
+            (
+                "xs": 0,
+                "s": 0,
+                "m": 8em,
+                "ml": 9em,
+                "l": 11.5em,
+                "xl": 11.5em,
+            )
+        );
+        right: 4em;
+
+        &:after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+    }
+}
+
+#our-story {
+    .our-story__divider {
+        color: util.$var-primary-color;
+        @include util.mix-responsive(
+            "font-size",
+            1.5rem,
+            (
+                "s": 2rem,
+                "m": 3rem,
+            )
+        );
+    }
+}
+
+#now-reading,
+#next-event {
+    img {
+        border: 1px solid util.$var-primary-color;
+    }
+}

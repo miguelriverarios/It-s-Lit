@@ -1,0 +1,61 @@
+<!-- Navigation Tabs -->
+
+<header class="site-header">
+    <div class="site-header__inner">
+        <div class="site-header__container">
+            <div class="site-header__logo-container">
+                <a class="redirect" data-target="/">
+                    {{> logo }}
+                </a>
+                <div class="social-media-buttons on-dark-background-color small-medium-text">
+                    <a data-target="https://www.instagram.com/lauxtheauthor/" class="redirect"><i
+                            class="fab fa-instagram"></i></a>
+                            <span class="pointer">&nbsp;</span>
+                    <a data-target="https://www.facebook.com/LAUXtheauthor/" class="redirect"><i
+                            class="fab fa-facebook-f"></i></a>
+                            <span class="pointer">&nbsp;</span>
+                    <a data-target="https://twitter.com/LauxTheauthor" class="redirect"><i
+                            class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <nav>
+                <ul class="uppercase">
+                    <li><a class="{{ifElse type 'who-we-are' 'exactlyEquals' 'active' ''}} redirect small-medium-text"
+                            data-target="/who-we-are">Who We
+                            Are</a>
+                    </li>
+                    <li><span class="on-dark-background-color pointer">|</span></li>
+                    <li><a class="{{ifElse type 'reviews' 'exactlyEquals' 'active' ''}} redirect small-medium-text"
+                            data-target="/reviews">Book
+                            Reviews</a>
+                    </li>
+                    <li><span class="on-dark-background-color pointer">|</span></li>
+                    <li><a class="{{ifElse type 'events' 'exactlyEquals' 'active' ''}} redirect small-medium-text"
+                            data-target="/events">Events</a></li>
+                </ul>
+            </nav>
+            <a href="#" data-target="slide-out" class="sidenav-trigger on-dark-background-color medium-text"><i id="mobile-nav" class="fas fa-bars"></i></a>
+        </div>
+
+    </div>
+    <div class="site-header__bg"></div>
+
+
+
+</header>
+
+<aside>
+    <ul id="slide-out" class="sidenav uppercase">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="../../images/book-club.jpg">
+                </div>
+            </div>
+        </li>
+        <li><a class="waves-effect redirect" data-target="/">Home</a></li>
+        <li><a class="waves-effect redirect" data-target="/who-we-are">Who We Are</a></li>
+        <li><a class="waves-effect redirect" data-target="/reviews">Book Reviews</a></li>
+        <li><a class="waves-effect redirect" data-target="/events">Events</a></li>
+    </ul>
+</aside>

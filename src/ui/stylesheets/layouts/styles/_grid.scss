@@ -1,0 +1,27 @@
+@use "../../utilities" as util;
+@use "../../vendors" as vend;
+
+// .responsive-margin {
+//     @include util.mix-responsive(
+//         "padding",
+//         1rem 1rem,
+//         (
+//             "xs": 1rem 2rem,
+//             "s": 1rem 2rem,
+//             "m": 1rem 4rem,
+//             "ml": 1.5rem 6rem,
+//             "l": 1.5rem 10rem,
+//             "l2": 1.5rem 16rem,
+//             "xl": 1.5rem 16rem,
+//         )
+//     );
+// }
+
+.container {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+// Because row cannot also have vertical align wrapper
+// https://github.com/Dogfalo/materialize/issues/3361
+@media only screen and (max-width: 600px) { .row.valign-wrapper { display: inherit; } }

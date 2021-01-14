@@ -1,0 +1,40 @@
+@use "../../utilities" as util;
+@use "../../vendors" as vend;
+
+.site-footer {
+    .site-footer__contact-us {
+        input[type="email"]:not(.browser-default):focus:not([readonly]) + label,
+        input[type="text"]:not(.browser-default):focus:not([readonly]) + label {
+            color: util.$var-background-color;
+        }
+
+        input[type="text"]:not(.browser-default).valid,
+        input[type="email"]:not(.browser-default).valid {
+            border-bottom: 1px solid util.$var-background-color;
+            box-shadow: 0 1px 0 0 util.$var-background-color;
+        }
+    }
+
+    .site-footer__social-media {
+        i {
+            transition: color 0.5s ease;
+        }
+    }
+
+    .site-footer__right {
+        p {
+            font-weight: lighter;
+        }
+    }
+
+    .site-footer__logo {
+        svg {
+            height: 200px;
+            width: 200px;
+
+            g {
+                fill: util.$var-background-color;
+            }
+        }
+    }
+}

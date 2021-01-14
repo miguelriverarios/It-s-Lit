@@ -6,15 +6,24 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+// const cors = require('cors');
 const favicon = require('serve-favicon');
-const index = require('../routes/trivia');
+const index = require('../routes/index');
+const trivia = require('../routes/trivia');
+const events = require('../routes/events');
+const reviews = require('../routes/reviews');
+const whoWeAre = require('../routes/whoWeAre');
+
+console.log(path.join(__dirname, '../../dist/', 'favicon.ico'));
 
 const app = express();
-//app.use(favicon(path.join(__dirname, '../../dist/', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, '../../dist/', 'favicon.ico')));
 
 // Uncomment when launching dev site
 // app.use(auth);
 
+// app.use(cors());
+// app.options('*', cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -37,6 +46,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../', 'dist')));
 
 app.use('/', index);
+app.use('/trivia', trivia);
+app.use('/events', events);
+app.use('/reviews', reviews);
+app.use('/who-we-are', whoWeAre);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,0 +1,22 @@
+@use "../../utilities" as util;
+@use "../../vendors" as vend;
+
+body {
+    background-color: util.$var-background-color;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.pointer {
+    cursor: default;
+}
+
+.primary-background {
+    background-color: util.$var-primary-color;
+}
+
+.secondary-background {
+    background-color: util.$var-secondary-color;
+}

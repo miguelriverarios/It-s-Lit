@@ -1,0 +1,11 @@
+@use "../../utilities" as util;
+@use "../../vendors" as vend;
+
+#loading-overlay {
+    background-color: util.$var-primary-color;
+    position:fixed;
+    height:100%;
+    width:100%;
+    z-index:1000000;
+    top: 0;
+}

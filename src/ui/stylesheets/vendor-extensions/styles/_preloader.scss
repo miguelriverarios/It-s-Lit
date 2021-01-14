@@ -1,0 +1,17 @@
+@use "../../utilities" as util;
+
+.progress {
+    margin-top: 0;
+    background-color: util.$var-background-color;
+    height: 10px;
+    // opacity: 0;
+    // transition: opacity 500ms ease;
+
+    .indeterminate {
+        background-color: util.$var-secondary-color;
+    }
+}
+
+// .fade-in {
+//     opacity: 1;
+// }

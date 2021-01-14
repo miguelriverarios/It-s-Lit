@@ -1,0 +1,15 @@
+@use "sass:map";
+@use "../../utilities" as util;
+
+@each $theme in map.keys(util.$var-themes) {
+    .#{$theme} {
+        [type="checkbox"] + span:not(.lever):before,
+        [type="checkbox"]:not(.filled-in) + span:not(.lever):after {
+            border: 2px solid map.get(map.get(util.$var-themes, $theme), "font-color");
+        }
+
+        [type=checkbox]:checked+span:not(.lever):before {
+            border-color: transparent map.get(map.get(util.$var-themes, $theme), "focus-color") map.get(map.get(util.$var-themes, $theme), "focus-color") transparent
+        }
+    }
+}

@@ -1,0 +1,76 @@
+@use "sass:map";
+@use "../../utilities" as util;
+
+input[type=number]:not(.browser-default),
+input[type=text]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=email]:not(.browser-default) {
+    text-align: center;
+}
+
+@each $theme in map.keys(util.$var-themes) {
+    .#{$theme} {
+
+        label {
+            color: map.get(map.get(util.$var-themes, $theme), 'font-color');
+        }
+
+        input[type="text"]:not(.browser-default):focus:not([readonly]) + label {
+            color: map.get(map.get(util.$var-themes, $theme), 'focus-color');
+        }
+        
+
+        input:not(.browser-default) {
+            border-bottom: 1px solid map.get(map.get(util.$var-themes, $theme), 'font-color');
+            caret-color: map.get(map.get(util.$var-themes, $theme), 'font-color');
+            color: map.get(map.get(util.$var-themes, $theme), 'font-color');
+
+            &:focus {
+                color: map.get(map.get(util.$var-themes, $theme), 'font-color');
+            }
+        }
+
+        input:not(.browser-default):focus:not([readonly]) {
+            border-bottom: 1px solid map.get(map.get(util.$var-themes, $theme), 'focus-color');
+            box-shadow: 0 1px 0 0 map.get(map.get(util.$var-themes, $theme), 'focus-color')
+        }
+        
+    }
+}
+
+// Rank Input Fields
+.rank {
+    .input-field {
+        width: 30%;
+        margin: 0 1em 0 0;
+
+        input[type=number] {
+            width: 100%;
+        }
+    }
+
+    span {
+        font-size: large;
+        margin-left: 1em;
+    }
+}
+
+// Remove arrow incrementer on number field
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// Hide native date picker
+input::-webkit-calendar-picker-indicator{
+    display: none;
+}
+
+input[type="date"]::-webkit-input-placeholder{ 
+    visibility: hidden !important;
+}

@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "../../utilities" as util;
+
+@each $theme in map.keys(util.$var-themes) {
+    .#{$theme} {
+        [type="radio"]:not(:checked) + span:after,
+        [type="radio"]:not(:checked) + span:before {
+            border: 2px solid map.get(map.get(util.$var-themes, $theme), 'font-color');
+        }
+
+        [type="radio"].with-gap:checked + span:after,
+        [type="radio"]:checked + span:after {
+            background-color: map.get(map.get(util.$var-themes, $theme), 'font-color');
+        }
+
+        [type="radio"].with-gap:checked + span:after,
+        [type="radio"].with-gap:checked + span:before,
+        [type="radio"]:checked + span:after {
+            border: 2px solid map.get(map.get(util.$var-themes, $theme), 'font-color');
+        }
+    }
+}

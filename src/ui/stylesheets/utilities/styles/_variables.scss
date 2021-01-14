@@ -1,0 +1,35 @@
+$primary-color: #683177;
+$on-primary-color: #fff8eb;
+
+$secondary-color: #9b4755;
+$on-secondary-color: #fff8eb;
+
+$background-color: #fff8eb;
+$on-background-color: #411f1f;
+
+$themes: (
+    light: (
+        font-color: black,
+        focus-color: $background-color
+    ),
+    dark: (
+        font-color: white,
+        focus-color: $background-color
+    )
+);
+
+$named-breakpoints: (
+    "xs": 400px,
+    "s": 600px,
+    "m": 800px,
+    "ml": 1100px,
+    "l": 1420px,
+    "l2": 1600px,
+    "xl": 2100px,
+    "ipad": (
+        min-device-width 768px,
+    )
+    (
+        max-device-width 1024px,
+    ),
+);

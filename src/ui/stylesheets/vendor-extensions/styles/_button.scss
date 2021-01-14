@@ -1,0 +1,47 @@
+@use "sass:map";
+@use "../../utilities" as util;
+
+.btn {
+    width: 100%;
+    height: auto;
+}
+
+.brown-btn {
+    background-color: util.$var-on-background-color;
+
+    &:hover {
+        background-color: util.$var-background-color;
+        color: util.$var-on-background-color;;
+    }
+}
+
+.light-btn {
+    &.btn-flat {
+        border: 1px solid rgba(util.$var-on-background-color, 0.3);
+
+        &:hover {
+            background-color: util.$var-secondary-color;
+            color: util.$var-background-color;;
+        }
+    }
+}
+
+.purple-btn {
+    &.btn-flat {
+        border: 1px solid rgba(util.$var-background-color, 0.3);
+        color: util.$var-background-color;
+
+        &:hover {
+            background-color: util.$var-background-color;
+            color: util.$var-primary-color;;
+        }
+    }
+}
+
+@each $theme in map.keys(util.$var-themes) {
+    .#{$theme} {
+        .btn-flat {
+            color: map.get(map.get(util.$var-themes, $theme), "font-color");
+        }
+    }
+}

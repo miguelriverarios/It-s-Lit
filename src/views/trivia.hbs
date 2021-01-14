@@ -1,5 +1,113 @@
-{{#each payload}}
-<div>
-    {{question}}
+{{#if payload.triviaToday}}
+
+<div id="logo-trivia">
+    {{> logo }}
 </div>
-{{/each}}
+
+<main id="carousel">
+
+    {{#each payload.questions}}
+
+    <section id="{{@index}}" style="background-color:{{backgroundColor}};"
+        class="question {{lightOrDark backgroundColor}} {{ifElse @index 0 'exactlyEquals' 'active' 'inactive'}}">
+        <article>
+            {{#if imageLink}}
+            <img src="{{imageLink}}">
+            {{/if}}
+
+            <main class="questionAndChoices">
+                {{#if isTitlePage }}
+                <h1>{{question}}</h1>
+                {{/if}}
+
+                {{#if description}}
+                <h2>{{description}}</h2>
+                {{/if}}
+            </main>
+
+            {{#if (ifElse ../payload.lastQuestionIx @index 'equals' true false)}}
+            <a class="save waves-effect waves-light btn purple darken-1">Submit</a>
+            {{else if (ifElse questionType 'Text Free Response' 'exactlyEquals' true false)}}
+            <input type="text">
+            {{else if (ifElse questionType 'Email' 'exactlyEquals' true false)}}
+            <input type="email">
+            {{else if (ifElse questionType 'Number' 'exactlyEquals' true false)}}
+            <input type="number">
+            {{else if (ifElse questionType 'Date' 'exactlyEquals' true false)}}
+            <input type="date">
+            {{else if (ifElse questionType 'Single Select' 'exactlyEquals' true false)}}
+            <div>
+                {{#each choices}}
+                <p>
+                    <label>
+                        <input name="choices" type="radio" />
+                        <span>{{this}}</span>
+                    </label>
+                </p>
+                {{/each}}
+            </div>
+            {{else if (ifElse questionType 'Multi Select' 'exactlyEquals' true false)}}
+            <div>
+                {{#each choices}}
+                <p>
+                    <label>
+                        <input type="checkbox" />
+                        <span>{{this}}</span>
+                    </label>
+                </p>
+                {{/each}}
+            </div>
+            {{else if (ifElse questionType 'Rank' 'exactlyEquals' true false)}}
+            <div class="rank">
+                {{#each choices}}
+                <div>
+                    <div class="input-field inline">
+                        <input type="number" class="rank">
+
+                    </div>
+                    <span>{{this}}</span>
+                </div>
+                {{/each}}
+            </div>
+            {{/if}}
+
+
+            <footer class="{{ifElse questionType 'Midpoint' 'exactlyEquals' 'delay-timer' ''}}">
+                {{#if (ifElse ../payload.postMidpointIx @index 'equals' false true)}}
+                {{#if @index}}
+                <button class="waves-effect btn-flat back">Back</button>
+                {{/if}}
+                {{/if}}
+
+                {{#if (ifElse ../payload.lastQuestionIx @index 'equals' false true)}}
+                <button class="waves-effect btn-flat next">Next</button>
+                {{/if}}
+            </footer>
+        </article>
+    </section>
+    {{/each}}
+</main>
+{{else}}
+<main id="no-trivia" class="show-footer on-dark-background-color">
+    <article class="container">
+        <div class="row">
+            <div class="col s12">
+                <h1>
+                    Looks like there is no trivia scheduled for today.
+                </h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <p>
+                    <a class="redirect" data-target="/events">You can check out our upcoming events here</a>. We look
+                    forward to seeing you at our
+                    next
+                    event!
+                </p>
+            </div>
+        </div>
+    </article>
+</main>
+{{/if}}

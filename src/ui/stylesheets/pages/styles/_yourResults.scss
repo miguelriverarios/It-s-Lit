@@ -1,0 +1,50 @@
+@use "../../utilities" as util;
+@use "../../vendors" as vend;
+
+#results {
+    @include util.mix-flex($direction: column);
+    background-color: util.$var-primary-color;
+    color: util.$var-background-color;
+    height: 100vh;
+    text-align: center;
+
+    .drums {
+        @include util.mix-flex($justify: space-evenly);
+        width: 100%;
+
+        img {
+            height: 150px;
+            opacity: 0;
+            transition: all 0.5s;
+            border-radius: 10px;
+            border: 2px solid util.$var-background-color;
+
+            &.appear {
+                opacity: 1;
+            }
+        }
+    }
+
+    .score-and-text:not(.no-fade-in) {
+        opacity: 0;
+        transition: all 0.5s ease;
+
+        &.fade-in {
+            opacity: 1;
+        }
+    }
+
+    h1 {
+        font-size: 7em;
+        font-weight: bolder;
+    }
+
+    p {
+        font-size: 1.5em;
+    }
+
+    a {
+        font-size: 2em;
+        color: util.$var-background-color;
+    }
+}

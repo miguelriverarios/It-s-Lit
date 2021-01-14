@@ -1,0 +1,31 @@
+<main id="results" class="show-footer responsive-margin">
+
+    {{#if (ifElse payload.numScores 0 'exactlyEquals' true false)}}
+    <div class="score-and-text no-fade-in">
+        <h1>We can't look up your scores right now. Please reach out to us via email and we will help you troubleshoot.
+        </h1>
+    </div>
+    {{else}}
+    <h3>Your final score is...</h3>
+    <div class="drums">
+        <img src="https://i.giphy.com/media/Vh8WhUCpJVeaqcrgOn/giphy.gif">
+        <img src="https://i.giphy.com/media/FP56vNcwOVyvu/giphy.gif">
+        <img src="https://i.giphy.com/media/GBvkxysAR8Svm/giphy.gif">
+    </div>
+
+    <div class="score-and-text">
+        <h1>{{payload.scores.0.score}} out of {{payload.scores.0.possiblePoints}}</h1>
+
+        <p>Regardless of your score, we sincerely hope you had a great time reminiscing with us. You'll be getting your
+            individual responses via the email you supplied in the beginning. We hope to see you at our next event!</p>
+
+        <p>If you did have fun, please like and subscribe us on our social media accounts:</p>
+
+        <p>
+            <a href="https://www.instagram.com/lauxtheauthor/"><i class="fab fa-instagram"></i></a>&nbsp;
+            <a href="https://www.facebook.com/LAUXtheauthor/"><i class="fab fa-facebook-f"></i></a>&nbsp;
+            <a href="https://twitter.com/LauxTheauthor"><i class="fab fa-twitter"></i></a>
+        </p>
+    </div>
+    {{/if}}
+</main>

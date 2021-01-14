@@ -1,0 +1,6 @@
+@use "../../utilities" as util;
+
+.toast {
+    background-color: util.$var-primary-color;
+    color: util.$var-background-color;
+}

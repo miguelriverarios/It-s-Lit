@@ -1,0 +1,66 @@
+@use "../../utilities" as util;
+@use "../../vendors" as vend;
+
+img {
+    object-fit: cover;
+    @include util.mix-responsive(
+        "height",
+        15rem,
+        (
+            "xs": 18rem,
+            "s": 15rem,
+            "m": 16rem,
+            "ml": 18rem,
+            "l": 22rem,
+        )
+    );
+
+    &:not(.square-corner) {
+        border-radius: 10px;
+    }
+
+    &.scale-on-hover {
+        transition: transform 0.9s cubic-bezier(0.215, 0.61, 0.355, 1);
+        border: 1px solid util.$var-primary-color;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &.circle {
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        border: 1px solid util.$var-background-color;
+    }
+
+    &.large-vertical-image {
+        border-radius: 40px;
+        @include util.mix-responsive(
+            "height",
+            15rem,
+            (
+                "xs": 30rem,
+                "s": 20rem,
+                "m": 28rem,
+                "ml": 30rem,
+                "l": 38rem,
+            )
+        );
+    }
+
+    &.landscape-image {
+        @include util.mix-responsive(
+            "height",
+            8rem,
+            (
+                "xs": 12rem,
+                "s": 10rem,
+                "m": 14rem,
+                "ml": 15rem,
+                "l": 18rem,
+            )
+        );
+    }
+}

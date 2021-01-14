@@ -1,0 +1,59 @@
+@use "sass:map";
+@use "../../utilities" as util;
+
+.modal-content {
+    @include util.mix-flex($justify: space-between);
+    background-color: util.$var-background-color;
+    @include util.mix-responsive(
+        "justify-content",
+        center,
+        (
+            "l": space-between,
+        )
+    );
+
+    img {
+        margin-right: 1.5em;
+        @include util.mix-responsive(
+            "display",
+            none,
+            (
+                "s": block,
+            )
+        );
+    }
+
+    &.share-modal {
+        padding: 0;
+
+        .collection {
+            width: 100%;
+            margin: 0;
+
+            .collection-item,
+            .collection-header {
+                background-color: util.$var-background-color;
+            }
+
+            .collection-item {
+                @include util.mix-flex($justify: flex-start);
+
+                &:hover {
+                    background-color: rgba(util.$var-primary-color, 0.4);
+                    cursor: pointer;
+                }
+
+                a {
+                    width: 30px;
+                    color: util.$var-primary-color;
+                    font-size: 2em;
+                    margin-right: 1em;
+                }
+            }
+        }
+    }
+}
+
+.share-event {
+    width: 30vw;
+}

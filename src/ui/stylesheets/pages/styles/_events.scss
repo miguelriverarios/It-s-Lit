@@ -1,0 +1,232 @@
+@use "../../utilities" as util;
+@use "../../vendors" as vend;
+
+.no-events {
+    a {
+        i {
+            font-size: 2em;
+        }
+    }
+}
+
+#events {
+    .event-title:not(.first-title) {
+        padding-top: 0.2em;
+    }
+
+    .row:not(.first-row) .details-container {
+        @include util.mix-responsive(
+            "padding-top",
+            2em,
+            (
+                "xs": 1em,
+                "s": 0.1em,
+            )
+        );
+    }
+
+    .details-container {
+        @include util.mix-responsive(
+            "height",
+            auto,
+            (
+                "m": 20vh,
+            )
+        );
+        @include util.mix-responsive(
+            "width",
+            100%,
+            (
+                "m": 33.3333%,
+            )
+        );
+        @include util.mix-responsive(
+            "font-size",
+            0.8rem,
+            (
+                "xs": 0.9rem,
+                "s": 1rem,
+                "m": 0.9rem,
+                "ml": 1rem,
+                "l": 1.2rem
+            )
+        );
+    }
+
+    .background-lines {
+        @include util.mix-flex($direction: column);
+        width: 0;
+        max-width: 100%;
+        position: absolute;
+        height: 10em;
+        transition: all 0.75s ease;
+        opacity: 0;
+
+        div {
+            width: 100%;
+            background-color: util.$var-primary-color;
+        }
+
+        .one,
+        .five {
+            height: 0.2em;
+        }
+
+        .two,
+        .four {
+            height: 0.5em;
+            margin: 0.5em 0;
+        }
+
+        .three {
+            height: 1em;
+            margin: 0.4em 0;
+        }
+    }
+
+    .odd {
+        .background-lines {
+            div {
+                background-color: util.$var-background-color;
+            }
+        }
+
+        .floating-image {
+            &:hover {
+                transform: scale(1.2);
+                border-color: util.$var-background-color;
+            }
+        }
+
+        .event-image {
+            border: 2px solid util.$var-background-color;
+        }
+
+        .btn {
+            i {
+                background-color: util.$var-primary-color;
+                color: util.$var-background-color;
+            }
+        }
+    }
+
+    .image {
+        filter: grayscale(1);
+        transform: translateY(-30px);
+        transition: all 0.75s ease;
+        opacity: 0;
+    }
+
+    .floating-image {
+        width: 20vh;
+        height: 20vh;
+        object-fit: cover;
+        transition: all 0.5s ease;
+        border: 2px solid black;
+        border-radius: 4px;
+        @include util.mix-responsive(
+            "display",
+            none,
+            (
+                "m": inline-block,
+            )
+        );
+
+        &:hover {
+            transform: scale(1.2);
+            border-color: util.$var-primary-color;
+        }
+    }
+
+    .btn {
+        position: absolute;
+        opacity: 0;
+        @include util.mix-responsive(
+            "transform",
+            translateY(4vh),
+            (
+                "xs": translateY(7.5vh),
+                "s": translateY(12.5vh),
+                "m": translateY(15vh),
+                "ml": translateY(17vh),
+                "l": translateY(20vh),
+            )
+        );
+        i {
+            background-color: util.$var-background-color;
+            color: util.$var-primary-color;
+        }
+    }
+
+    .slide-in {
+        opacity: 1;
+    }
+
+    .share-btn {
+        z-index: 2;
+    }
+
+    .main-image {
+        @include util.mix-flex;
+        height: 50vh;
+        margin: 0.5em 0 2em 0;
+        @include util.mix-responsive(
+            "height",
+            18vh,
+            (
+                "xs": 25vh,
+                "s": 35vh,
+                "m": 40vh,
+                "ml": 44vh,
+                "l": 50vh,
+            )
+        );
+    }
+
+    .event-image {
+        height: 100%;
+        z-index: 1;
+        border-radius: 10px;
+        border: 2px solid util.$var-primary-color;
+        transform: translateY(-30px);
+        transition: all 0.75s ease;
+        opacity: 0;
+    }
+
+    .slide-up {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .slide-out {
+        opacity: 1;
+        width: 100vw;
+    }
+
+    .details {
+        text-align: center;
+        opacity: 0;
+        transform: translateY(-30px);
+        transition: all 0.75s ease;
+        @include util.mix-flex($direction: column, $justify: flex-end);
+        height: 100%;
+
+        p {
+            margin: 0;
+        }
+
+        p:first-child {
+            font-weight: bolder;
+            font-size: 2em;
+        }
+
+        p:not(:first-child) {
+            font-size: 1.5em;
+        }
+
+        &.slide-up-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

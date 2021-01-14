@@ -14,15 +14,21 @@ module.exports = {
         // Adding fallback polyfills due to a breaking change in Webpack 5
         // Alternatively could have added an empty polyfill like {http: false}
         fallback: {
+            // Need fallbacks to implement Event Source API
             // "http": require.resolve("stream-http"),
             // "https": require.resolve("https-browserify"),
             // "path": require.resolve("path-browserify"),
+            // "os": false,
+            // "constants": require.resolve("constants-browserify"),
             // "crypto": require.resolve("crypto-browserify"),
             // "stream": require.resolve("stream-browserify"),
             // "zlib": require.resolve("browserify-zlib"),
             // https://stackoverflow.com/questions/54459442/module-not-found-error-cant-resolve-child-process-how-to-fix
             // "child_process": false,
             // "fs": false,
+            // "net": false,
+            // "tls": false,
+            // "http2": false,
             // "zlib_bindings": false
         }
     },

@@ -5,3 +5,4 @@ security/
 yarn.lock
 yarn-error.log
 src/ui/concat/
+src/ui/stylesheets/vendors/_slick-theme.scss

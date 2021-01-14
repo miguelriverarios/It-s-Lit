@@ -14,6 +14,16 @@ const cssnano = require('cssnano');
 const config = require('./webpack.config');
 const merge = require('merge-stream');
 
+gulp.task('fonts', function () {
+  return gulp.src(['node_modules/slick-carousel/slick/fonts/*', 'node_modules/@fortawesome/fontawesome-free/webfonts/*'])
+    .pipe(gulp.dest('dist/fonts/webfonts/'));
+});
+
+gulp.task('images', function () {
+  return gulp.src(['node_modules/slick-carousel/slick/ajax-loader.gif'])
+    .pipe(gulp.dest('dist/images/'));
+});
+
 gulp.task('styles', function () {
   const plugins = [
     autoprefixer(),
@@ -26,10 +36,11 @@ gulp.task('styles', function () {
       includePaths: ['node_modules']
     },
       { errLogToConsole: true }))
+    .pipe(replace(/..\/webfonts/g, '../../fonts/webfonts'))
     .pipe(concat('scss-files.css'))
     .pipe(gulp.dest('src/ui/concat/'));
 
-    const cssStream = gulp.src('./src/ui/stylesheets/vendors/*.css')
+  const cssStream = gulp.src('./src/ui/stylesheets/vendors/*.css')
     .pipe(concat('css-files.css'))
     .pipe(gulp.dest('src/ui/concat/'));
 
@@ -76,4 +87,4 @@ gulp.task('browser-sync', gulp.series('nodemon', function (done) {
   done();
 }));
 
-gulp.task('start', gulp.series('styles', 'javascripts', 'browser-sync'));
+gulp.task('start', gulp.series('styles', 'javascripts', 'fonts', 'images', 'browser-sync'));

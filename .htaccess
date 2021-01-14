@@ -1,2 +1,8 @@
 DirectoryIndex disabled
 RewriteEngine on
+RewriteCond "%{HTTPS}"          "!on" [OR]
+RewriteCond "%{HTTP_HOST}"      "!^itslit\.us" [NC]
+RewriteRule "^(.*)"             "https://itslit.us/$1" [R=301]
+RewriteCond "%{HTTPS}"          "on"
+RewriteCond "%{HTTP_HOST}"      "^itslit\.us" [NC]
+RewriteRule "^(.*)$"            "http://localhost:3000/$1" [P,L]

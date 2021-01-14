@@ -1,0 +1,58 @@
+<main>
+
+    <section class="hero">
+        <img class="hero__image" src="../../images/book-review-hero.jpg" />
+        <h1 class="hero__title on-dark-background-color large-text">
+            Book Reviews
+        </h1>
+    </section>
+
+    <section class="book-reviews container">
+        {{#each payload}}
+        <div id="{{this.0.year}}" class="separator-container scrollspy">
+            <h1 class="separator">{{this.0.year}}</h3>
+        </div>
+        <div class="row">
+            {{#each this}}
+            <div class="col s12 m6 l4 center-align">
+                <a href="#book-review" class="modal-trigger">
+                    <img class="scale-on-hover" src="{{bookCover}}">
+                </a>
+
+                <div class="reasonForChoosing hide">
+                    {{#each reasonForChoosing}}
+                    <p>{{this}}</p>
+                    {{/each}}
+                </div>
+
+                <div class="reasonForRating hide">
+                    {{#each reasonForRating}}
+                    <p>{{this}}</p>
+                    {{/each}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{/each}}
+
+        <div class="toc hide-on-small-only on-dark-background-color small-medium-text">
+            <ul class="section table-of-contents">
+                {{#each payload}}
+                <li><a href="#{{this.0.year}}">Books we read in {{this.0.year}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+
+        <div id="book-review" class="modal">
+            <div class="modal-content">
+                <img>
+                <article class="flow-text">
+                    <h4>Why did we chose it?</h4>
+                    <div></div>
+                    <h4>Did we like it?</h4>
+                    <div></div>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>

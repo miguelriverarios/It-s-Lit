@@ -1,0 +1,25 @@
+@use "../../utilities" as util;
+
+.toc {
+    position: fixed;
+    right: 0;
+    background-color: rgba(util.$var-primary-color, 0.3);
+
+    .table-of-contents {
+        margin-right: 1em;
+        a {
+            &.active {
+                border-left: 2px solid util.$var-primary-color;
+                font-weight: bolder;
+            }
+
+            &:hover {
+                color: util.$var-primary-color;
+            }
+
+            &:not(.active):hover {
+                border-left: 1px solid rgba(util.$var-primary-color, 0.5);
+            }
+        }
+    }
+}

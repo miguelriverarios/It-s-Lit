@@ -14,7 +14,6 @@ const reviews = async (req, res) => {
             const row = matrixToObjectArray(values, curr);
 
             if (row) {
-                // console.log(row);
                 const reasonForChoosing = row.reasonForChoosing ? row.reasonForChoosing.split(/(?:\r\n|\r|\n)/g) : '';
                 const reasonForRating = row.reasonForRating ? row.reasonForRating.split(/(?:\r\n|\r|\n)/g) : '';
                 const year = row.yearRead;
@@ -22,7 +21,8 @@ const reviews = async (req, res) => {
                     book: row.book, author: row.author, year: year,
                     order: row.orderWithinYear, bookCover: row.bookCoverImageLink,
                     rating: row.rating, searchTerms: row.searchTerms,
-                    reasonForChoosing: reasonForChoosing, reasonForRating: reasonForRating
+                    reasonForChoosing: reasonForChoosing, reasonForRating: reasonForRating,
+                    owner: row.owner
                 };
                 let columns;
 
@@ -43,6 +43,8 @@ const reviews = async (req, res) => {
 
             return prev;
         }, { keys: [], objects: [] });
+
+        payload.objects[0][payload.objects[0].length - 1].isFirst = true;
 
         options.payload = payload.objects;
 

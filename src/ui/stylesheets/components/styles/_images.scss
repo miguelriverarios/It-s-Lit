@@ -1,6 +1,38 @@
 @use "../../utilities" as util;
 @use "../../vendors" as vend;
 
+.most-recent-book {
+    img.scale-on-hover {
+        opacity: 0.5;
+        border: 2px dashed util.$var-primary-color;
+    }
+
+    .image-banner {
+        @include util.mix-flex;
+        background-color: util.$var-primary-color;
+        color: util.$var-background-color;
+        font-weight: bold;
+        border-radius: 4px;
+        margin: auto;
+        width: 50%;
+        height: 20px;
+        opacity: 0;
+    }
+
+    .fade-out {
+        animation: fadeOut linear 3s;
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+}
+
 img {
     object-fit: cover;
     @include util.mix-responsive(

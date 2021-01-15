@@ -15,8 +15,12 @@
         <div class="row">
             {{#each this}}
             <div class="col s12 m6 l4 center-align">
-                <a href="#book-review" class="modal-trigger">
+                <a href="#book-review" class="modal-trigger {{ifElse isFirst true 'equals' 'most-recent-book' ''}}">
                     <img class="scale-on-hover" src="{{bookCover}}">
+                    {{#if isFirst}}
+                    <div class="image-banner">Currently Reading</div>
+                    {{/if}}
+                    
                 </a>
 
                 <div class="reasonForChoosing hide">
@@ -29,6 +33,10 @@
                     {{#each reasonForRating}}
                     <p>{{this}}</p>
                     {{/each}}
+                </div>
+
+                <div class="owner hide">
+                    {{owner}}
                 </div>
             </div>
             {{/each}}
@@ -51,6 +59,7 @@
                     <div></div>
                     <h4>Did we like it?</h4>
                     <div></div>
+                    <footer></footer>
                 </article>
             </div>
         </div>

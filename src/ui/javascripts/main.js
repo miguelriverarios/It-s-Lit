@@ -1,5 +1,16 @@
 require('materialize-css/dist/js/materialize.min.js');
 
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+$(window).on('resize', () => {
+    // We execute the same script as before
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  });
+
 // $(
 //     () => {
 //         $('.tabs').tabs();
@@ -66,12 +77,12 @@ const submitData = (event) => {
         return data;
     });
 
-    if (Object.keys(data).length !== 3) {
+    if (Object.keys(data).length !== 2) {
 
         M.toast({ html: 'Please make sure you\'ve filled in all details' });
         $("." + buttonClass).attr("disabled", false);
     } else if (!/@/.test(data.email)) {
-        M.toast({ html: 'Please make sure you\'ve enetered a valid email' });
+        M.toast({ html: 'Please make sure you\'ve entered a valid email' });
         $("." + buttonClass).attr("disabled", false);
     } else {
 

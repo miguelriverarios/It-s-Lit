@@ -33,13 +33,13 @@
                 "m": 20vh,
             )
         );
-        @include util.mix-responsive(
-            "width",
-            100%,
-            (
-                "m": 33.3333%,
-            )
-        );
+        // @include util.mix-responsive(
+        //     "width",
+        //     100%,
+        //     (
+        //         "m": 33.3333%,
+        //     )
+        // );
         @include util.mix-responsive(
             "font-size",
             0.8rem,

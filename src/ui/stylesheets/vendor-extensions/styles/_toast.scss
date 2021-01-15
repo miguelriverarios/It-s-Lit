@@ -1,6 +1,8 @@
 @use "../../utilities" as util;
 
-.toast {
-    background-color: util.$var-primary-color;
-    color: util.$var-background-color;
+#toast-container {
+    .toast {
+        background-color: util.$var-on-background-color;
+        color: util.$var-background-color;
+    }
 }

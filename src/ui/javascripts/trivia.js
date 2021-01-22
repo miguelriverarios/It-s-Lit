@@ -131,10 +131,13 @@ const getValue = (type, val) => {
             break;
         case 'rank':
             $(".active input").each((ix, el) => {
-                //if ($(el).val()) {
-                val += ',' + $(el).val();
-                //}
+                const $this = $(el);
+                const container = $this.parents(".rank-container");
+                const label = container.find(".rank-label").text().trim();
+                const num = $(el).val();
+                val += ',' + num + "-" + label;
             });
+            val = val.split(",").sort().toString();
             break;
         default:
             val = $(".active input").val();

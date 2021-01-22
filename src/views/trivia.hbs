@@ -62,12 +62,11 @@
             {{else if (ifElse questionType 'Rank' 'exactlyEquals' true false)}}
             <div class="rank">
                 {{#each choices}}
-                <div>
+                <div class="rank-container">
                     <div class="input-field inline">
                         <input type="number" class="rank">
-
                     </div>
-                    <span>{{this}}</span>
+                    <span class="rank-label">{{this}}</span>
                 </div>
                 {{/each}}
             </div>

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const trivia = require('../controllers/trivia');
 const submitResponse = require('../controllers/submitResponse');
-const yourResults = require('../controllers/yourResults');
+const yourResults = require('../controllers/your-results');
 
 router.get('/', trivia(false));
 router.get('/your-results', yourResults);

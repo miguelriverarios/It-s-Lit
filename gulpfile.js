@@ -14,6 +14,11 @@ const cssnano = require('cssnano');
 const config = require('./webpack.config');
 const merge = require('merge-stream');
 
+const layouts = require('handlebars-layouts');
+const rename = require('gulp-rename');
+const data = require('gulp-data');
+const hb = require('gulp-hb');
+
 gulp.task('fonts', function () {
   return gulp.src(['node_modules/slick-carousel/slick/fonts/*', 'node_modules/@fortawesome/fontawesome-free/webfonts/*'])
     .pipe(gulp.dest('dist/fonts/webfonts/'));
@@ -86,5 +91,55 @@ gulp.task('browser-sync', gulp.series('nodemon', function (done) {
   });
   done();
 }));
+
+const hbStream = hb({ debug: true })
+  // Partials
+  .partials('./src/views/layouts/main.hbs')
+  .partials('./src/views/partials/**/*.hbs')
+
+  // Helpers
+  .helpers('./src/util/handlebarsHelpers.js')
+  .helpers(layouts)
+
+const staticFiles = () => {
+  return gulp
+    .src('./src/views/?(events|index|reviews|trivia|who-we-are|your-results).hbs')
+    .pipe(data((file) => {
+      require('dotenv').config();
+      try {
+        return require(file.path.replace('views', 'controllers').replace('.hbs', '.js'))({ getDataOnly: true });
+      } catch (err) {
+        console.log(err);
+      }
+    }))
+    .pipe(hbStream)
+    .pipe(rename(function (path) {
+      path.extname = '.html';
+    }))
+    .pipe(gulp.dest('./dist/pages'));
+}
+
+const runoffFile = (done) => {
+  return gulp
+    .src('./src/views/trivia.hbs')
+    .pipe(data((file) => {
+      require('dotenv').config();
+      try {
+        return require(file.path.replace('views', 'controllers').replace('.hbs', '.js'))({ getDataOnly: true, isRunoff: true });
+      } catch (err) {
+        console.log(err);
+      }
+    }))
+    .pipe(hbStream)
+    .pipe(rename(function (path) {
+      path.basename = 'runoff';
+      path.extname = '.html';
+    }))
+    .pipe(gulp.dest('./dist/pages'));
+}
+
+gulp.task("staticPages", staticFiles);
+
+gulp.task("runoffPage", runoffFile);
 
 gulp.task('start', gulp.series('styles', 'javascripts', 'fonts', 'images', 'browser-sync'));

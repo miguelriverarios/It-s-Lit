@@ -8,11 +8,11 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 // const cors = require('cors');
 const favicon = require('serve-favicon');
-const index = require('../routes/index');
-const trivia = require('../routes/trivia');
-const events = require('../routes/events');
-const reviews = require('../routes/reviews');
-const whoWeAre = require('../routes/whoWeAre');
+// const index = require('../routes/index');
+// const trivia = require('../routes/trivia');
+// const events = require('../routes/events');
+// const reviews = require('../routes/reviews');
+// const whoWeAre = require('../routes/whoWeAre');
 
 const app = express();
 app.use(favicon(path.join(__dirname, '../../dist/', 'favicon.ico')));
@@ -26,16 +26,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // configure hbs engine to register handlebars helpers
-app.engine("hbs", exphbs({
-  defaultLayout: "main",
-  partialsDir: path.join(__dirname, '../', 'views/partials/'),
-  extname: ".hbs",
-  helpers: require("../util/handlebarsHelpers.js").helpers
-}));
+// app.engine("hbs", exphbs({
+//   defaultLayout: "main",
+//   partialsDir: path.join(__dirname, '../', 'views/partials/'),
+//   extname: ".hbs",
+//   helpers: require("../util/handlebarsHelpers.js").helpers
+// }));
 
 // view engine setup
-app.set('views', path.join(__dirname, '../', 'views'));
-app.set('view engine', 'hbs');
+// app.set('views', path.join(__dirname, '../', 'views'));
+// app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -43,11 +43,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../', 'dist')));
 
-app.use('/', index);
-app.use('/trivia', trivia);
-app.use('/events', events);
-app.use('/reviews', reviews);
-app.use('/who-we-are', whoWeAre);
+// app.use('/', index);
+// app.use('/trivia', trivia);
+// app.use('/events', events);
+// app.use('/reviews', reviews);
+// app.use('/who-we-are', whoWeAre);
+
+app.use(express.static(path.join(__dirname, '../../', 'dist/pages'), { extensions: ['html'] }));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

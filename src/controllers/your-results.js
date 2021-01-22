@@ -8,7 +8,10 @@ const pageType = 'your-results';
 
 const trivia = async (req, res) => {
     const options = await getMinimumOptions(pageType);
-    const uid = getQueryParameter(req, "uid");
+    let uid;
+    req = req || {};
+
+    if (!req.getDataOnly) uid = getQueryParameter(req, "uid");
 
     try {
         const data = (await google(sheetName)).data;
@@ -17,7 +20,6 @@ const trivia = async (req, res) => {
             const row = matrixToObjectArray(values, curr);
 
             if (row) {
-                console.log(row);
                 const obj = {
                     uniqueId: row.uniqueId, email: row.emailAddress, teamName: row.teamName,
                     score: row.score, percentage: row.percentage, possiblePoints: row.possiblePoints
@@ -31,7 +33,8 @@ const trivia = async (req, res) => {
 
         options.payload = {scores: payload, numScores: payload.length};
 
-        res.render(pageType, options);
+        if (req.getDataOnly) return options;
+        else res.render(pageType, options);
 
     } catch (err) {
         catchError(err, sheetName);

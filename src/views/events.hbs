@@ -1,3 +1,5 @@
+{{#extend 'main'}}
+{{#content 'body'}}
 <main id="events">
     <section class="hero">
         <img class="hero__image square-corner" src="../../images/events-hero.jpg" />
@@ -9,24 +11,26 @@
     {{#if payload}}
 
     {{#each payload}}
-        <section class="{{evenOrOdd @index}} {{ifElse (isOdd @index) true 'exactlyEquals' 'primary-background on-dark-background-color' ''}}">
-            <div class="container">
-                <div class="row">
-                    <div class="col s12">
-                        <h2>{{title}}</h2>
-                    </div>
+    <section
+        class="{{evenOrOdd @index}} {{ifElse (isOdd @index) true 'exactlyEquals' 'primary-background on-dark-background-color' ''}}">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h2>{{title}}</h2>
                 </div>
-                <div class="row">
-                    <div class="col s3 left-align">
-                        <section>
-                            {{#if surroundingImages.[0]}}
-                            <img class="floating-image image" src="{{surroundingImages.[0]}}" />
-                            {{/if}}
-                        </section>
+            </div>
+            <div class="row">
+                <div class="col s3 left-align">
+                    <section>
+                        {{#if surroundingImages.[0]}}
+                        <img class="floating-image image" src="{{surroundingImages.[0]}}" />
+                        {{/if}}
+                    </section>
 
-                    </div>
-                    <div class="col s12 m6 details-container">
-                        <a class="redirect" data-target="{{purchaseLink}}"><div class="details">
+                </div>
+                <div class="col s12 m6 details-container">
+                    <a class="redirect" data-target="{{purchaseLink}}">
+                        <div class="details">
 
                             <p>{{date}} &mdash; {{time}}</p>
 
@@ -34,54 +38,55 @@
                             <p>{{this}}</p>
                             {{/each}}
 
-                        </div></a>
-                    </div>
-                    <div class="col s3 right-align">
-                        <section>
-                            {{#if surroundingImages.[1]}}
-                            <img class="floating-image image" src="{{surroundingImages.[1]}}" />
-                            {{/if}}
-                        </section>
-                    </div>
-                    <div class="col s12">
-                        <section class="main-image">
-                            <a class="btn share-btn btn-floating btn-large waves-effect waves-light modal-trigger"
-                                href="#share-event"><i class="fas fa-share-alt"></i></a>
-                            <img class="event-image {{ifElse isGif true 'equals' 'gif' ''}} {{@index}}"
-                                src="{{mainImage}}" />
+                        </div>
+                    </a>
+                </div>
+                <div class="col s3 right-align">
+                    <section>
+                        {{#if surroundingImages.[1]}}
+                        <img class="floating-image image" src="{{surroundingImages.[1]}}" />
+                        {{/if}}
+                    </section>
+                </div>
+                <div class="col s12">
+                    <section class="main-image">
+                        <a class="btn share-btn btn-floating btn-large waves-effect waves-light modal-trigger"
+                            href="#share-event"><i class="fas fa-share-alt"></i></a>
+                        <img class="event-image {{ifElse isGif true 'equals' 'gif' ''}} {{@index}}"
+                            src="{{mainImage}}" />
 
-                            <div class="background-lines">
-                                <div class="one"></div>
-                                <div class="two"></div>
-                                <div class="three"></div>
-                                <div class="four"></div>
-                                <div class="five"></div>
-                            </div>
+                        <div class="background-lines">
+                            <div class="one"></div>
+                            <div class="two"></div>
+                            <div class="three"></div>
+                            <div class="four"></div>
+                            <div class="five"></div>
+                        </div>
 
-                            <a class="btn purchase-btn btn-floating btn-large waves-effect waves-light"
-                                href="{{purchaseLink}}"><i class="fas fa-shopping-cart"></i></a>
-                        </section>
+                        <a class="btn purchase-btn btn-floating btn-large waves-effect waves-light"
+                            href="{{purchaseLink}}"><i class="fas fa-shopping-cart"></i></a>
+                    </section>
 
-                    </div>
+                </div>
 
-                    <div class="col s6 center-align">
-                        <section>
-                            {{#if surroundingImages.[2]}}
-                            <img class="floating-image image" src="{{surroundingImages.[2]}}" />
-                            {{/if}}
-                        </section>
+                <div class="col s6 center-align">
+                    <section>
+                        {{#if surroundingImages.[2]}}
+                        <img class="floating-image image" src="{{surroundingImages.[2]}}" />
+                        {{/if}}
+                    </section>
 
-                    </div>
-                    <div class="col s6 center-align">
-                        <section>
-                            {{#if surroundingImages.[3]}}
-                            <img class="floating-image image" src="{{surroundingImages.[3]}}" />
-                            {{/if}}
-                        </section>
-                    </div>
+                </div>
+                <div class="col s6 center-align">
+                    <section>
+                        {{#if surroundingImages.[3]}}
+                        <img class="floating-image image" src="{{surroundingImages.[3]}}" />
+                        {{/if}}
+                    </section>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
     <div id="share-event" class="modal">
         <div class="modal-content share-modal">
@@ -123,17 +128,20 @@
                     </p>
                 </a>
 
-                {{!-- <p>Engage with us on social media if you have any thoughts for future events (or if you just want to
+                <p>Engage with us on social media if you have any thoughts for future events (or if you just want to
                     checkin):</p>
 
                 <p>
-                    <a href="https://www.instagram.com/lauxtheauthor/"><i class="fab fa-instagram"></i></a>&nbsp;
-                    <a href="https://www.facebook.com/LAUXtheauthor/"><i class="fab fa-facebook-f"></i></a>&nbsp;
-                    <a href="https://twitter.com/LauxTheauthor"><i class="fab fa-twitter"></i></a>
-                </p> --}}
+                    <a href="https://www.instagram.com/itsliteraturebookclub_/"><i
+                            class="fab fa-instagram"></i></a>&nbsp;
+                    {{!-- <a href="https://www.facebook.com/LAUXtheauthor/"><i class="fab fa-facebook-f"></i></a>&nbsp;
+                    <a href="https://twitter.com/LauxTheauthor"><i class="fab fa-twitter"></i></a> --}}
+                </p>
             </div>
 
         </div>
     </div>
     {{/if}}
 </main>
+{{/content}}
+{{/extend}}

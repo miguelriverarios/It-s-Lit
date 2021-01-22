@@ -7,6 +7,7 @@ const pageType = 'who-we-are';
 
 const team = async (req, res) => {
     const options = await getMinimumOptions(pageType);
+    req = req || {};
 
     try {
         const data = (await google(sheetName)).data;
@@ -26,7 +27,8 @@ const team = async (req, res) => {
 
         options.payload = payload;
 
-        res.render(pageType, options);
+        if (req.getDataOnly) return options;
+        else res.render(pageType, options);
 
     } catch (err) {
         catchError(err, sheetName);

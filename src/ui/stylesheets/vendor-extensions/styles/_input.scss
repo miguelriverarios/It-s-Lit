@@ -1,40 +1,46 @@
 @use "sass:map";
 @use "../../utilities" as util;
 
-input[type=number]:not(.browser-default),
-input[type=text]:not(.browser-default),
-input[type=date]:not(.browser-default),
-input[type=email]:not(.browser-default) {
+input[type="number"]:not(.browser-default),
+input[type="text"]:not(.browser-default),
+input[type="date"]:not(.browser-default),
+input[type="email"]:not(.browser-default) {
     text-align: center;
+}
+
+.trivia {
+    input[type="number"]:not(.browser-default),
+    input[type="text"]:not(.browser-default),
+    input[type="date"]:not(.browser-default),
+    input[type="email"]:not(.browser-default) {
+        width: 50%;
+    }
 }
 
 @each $theme in map.keys(util.$var-themes) {
     .#{$theme} {
-
         label {
-            color: map.get(map.get(util.$var-themes, $theme), 'font-color');
+            color: map.get(map.get(util.$var-themes, $theme), "font-color");
         }
 
         input[type="text"]:not(.browser-default):focus:not([readonly]) + label {
-            color: map.get(map.get(util.$var-themes, $theme), 'focus-color');
+            color: map.get(map.get(util.$var-themes, $theme), "focus-color");
         }
-        
 
         input:not(.browser-default) {
-            border-bottom: 1px solid map.get(map.get(util.$var-themes, $theme), 'font-color');
-            caret-color: map.get(map.get(util.$var-themes, $theme), 'font-color');
-            color: map.get(map.get(util.$var-themes, $theme), 'font-color');
+            border-bottom: 1px solid map.get(map.get(util.$var-themes, $theme), "font-color");
+            caret-color: map.get(map.get(util.$var-themes, $theme), "font-color");
+            color: map.get(map.get(util.$var-themes, $theme), "font-color");
 
             &:focus {
-                color: map.get(map.get(util.$var-themes, $theme), 'font-color');
+                color: map.get(map.get(util.$var-themes, $theme), "font-color");
             }
         }
 
         input:not(.browser-default):focus:not([readonly]) {
-            border-bottom: 1px solid map.get(map.get(util.$var-themes, $theme), 'focus-color');
-            box-shadow: 0 1px 0 0 map.get(map.get(util.$var-themes, $theme), 'focus-color')
+            border-bottom: 1px solid map.get(map.get(util.$var-themes, $theme), "focus-color");
+            box-shadow: 0 1px 0 0 map.get(map.get(util.$var-themes, $theme), "focus-color");
         }
-        
     }
 }
 
@@ -44,7 +50,7 @@ input[type=email]:not(.browser-default) {
         width: 30%;
         margin: 0 1em 0 0;
 
-        input[type=number] {
+        input[type="number"] {
             width: 100%;
         }
     }
@@ -56,21 +62,21 @@ input[type=email]:not(.browser-default) {
 }
 
 // Remove arrow incrementer on number field
-input[type=number] {
+input[type="number"] {
     -moz-appearance: textfield;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 // Hide native date picker
-input::-webkit-calendar-picker-indicator{
+input::-webkit-calendar-picker-indicator {
     display: none;
 }
 
-input[type="date"]::-webkit-input-placeholder{ 
+input[type="date"]::-webkit-input-placeholder {
     visibility: hidden !important;
 }

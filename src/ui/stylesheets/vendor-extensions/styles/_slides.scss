@@ -3,3 +3,10 @@
 .slick-slide div {
     font-size: 0;
 }
+
+.slideNumber {
+    align-self: flex-start;
+    position: absolute;
+    bottom: 0;
+    margin: 1em;
+}

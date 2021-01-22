@@ -35,7 +35,7 @@ $(".save").on("click", () => {
     //$.post("/trivia/submit-response", postObj);
     $.post(webappURL, postObj);
 
-    window.location.href = "/trivia/your-results?uid=" + uuid;
+    window.location.href = "/your-results?uid=" + uuid;
 });
 
 $(".back, .next").on("click", (event) => {
@@ -152,6 +152,7 @@ $("#carousel").slick({
     draggable: false,
     arrows: false,
     dots: false,
+    accessibility: false,
     infinite: false
 });
 
@@ -160,6 +161,8 @@ $("#carousel").slick({
 // })
 // $("#loading-overlay").slideUp();
 
-$(window).on('load', () => { 
-    $("#loading-overlay").slideUp(1000);
- });
+if ($("#results").length === 0) {
+    $(window).on('load', () => {
+        $("#loading-overlay").slideUp(400);
+    });
+}

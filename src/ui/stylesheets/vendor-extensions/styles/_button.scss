@@ -1,6 +1,11 @@
 @use "sass:map";
 @use "../../utilities" as util;
 
+.trivia {
+    .btn {
+        width: auto;
+    }
+}
 .btn {
     width: 100%;
     height: auto;
@@ -11,7 +16,7 @@
 
     &:hover {
         background-color: util.$var-background-color;
-        color: util.$var-on-background-color;;
+        color: util.$var-on-background-color;
     }
 }
 
@@ -21,7 +26,7 @@
 
         &:hover {
             background-color: util.$var-secondary-color;
-            color: util.$var-background-color;;
+            color: util.$var-background-color;
         }
     }
 }
@@ -33,7 +38,7 @@
 
         &:hover {
             background-color: util.$var-background-color;
-            color: util.$var-primary-color;;
+            color: util.$var-primary-color;
         }
     }
 }

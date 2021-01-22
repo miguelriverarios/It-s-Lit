@@ -1,10 +1,12 @@
+{{#extend 'main'}}
+{{#content 'body'}}
 {{#if payload.triviaToday}}
 
 <div id="logo-trivia">
     {{> logo }}
 </div>
 
-<main id="carousel">
+<main id="carousel" class="trivia">
 
     {{#each payload.questions}}
 
@@ -17,11 +19,11 @@
 
             <main class="questionAndChoices">
                 {{#if isTitlePage }}
-                <h1>{{question}}</h1>
+                <h2>{{question}}</h2>
                 {{/if}}
 
                 {{#if description}}
-                <h2>{{description}}</h2>
+                <h3>{{description}}</h3>
                 {{/if}}
             </main>
 
@@ -71,6 +73,12 @@
             </div>
             {{/if}}
 
+            <h5 class="slideNumber">
+                {{#if slideNumber}}
+                ({{slideNumber}})
+                {{/if}}
+            </h5>
+
 
             <footer class="{{ifElse questionType 'Midpoint' 'exactlyEquals' 'delay-timer' ''}}">
                 {{#if (ifElse ../payload.postMidpointIx @index 'equals' false true)}}
@@ -111,3 +119,5 @@
     </article>
 </main>
 {{/if}}
+{{/content}}
+{{/extend}}

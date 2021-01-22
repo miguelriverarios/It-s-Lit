@@ -7,6 +7,8 @@ const pageType = 'reviews';
 
 const reviews = async (req, res) => {
     const options = await getMinimumOptions(pageType);
+    req = req || {};
+    
     try {
         const data = (await google(sheetName)).data;
         const values = data.values;
@@ -48,7 +50,8 @@ const reviews = async (req, res) => {
 
         options.payload = payload.objects;
 
-        res.render(pageType, options);
+        if (req.getDataOnly) return options;
+        else res.render(pageType, options);
 
 
     } catch (err) {

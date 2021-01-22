@@ -111,7 +111,7 @@ $('.subscribe-btn').on('click',
 );
 
 $(".redirect").on("click", (event) => {
-    $("#loading-overlay").slideDown(500, () => {
+    $("#loading-overlay").slideDown(400, () => {
         const tar = $(event.currentTarget).attr("data-target");
         window.location.href = tar;
     });

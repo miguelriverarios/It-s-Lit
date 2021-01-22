@@ -10,6 +10,7 @@ today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
 const events = async (req, res) => {
     const options = await getMinimumOptions(pageType);
+    req = req || {};
 
     try {
         const data = (await google(sheetName)).data;
@@ -39,7 +40,8 @@ const events = async (req, res) => {
 
         options.payload = payload;
 
-        res.render(pageType, options);
+        if (req.getDataOnly) return options;
+        else res.render(pageType, options);
 
     } catch (err) {
         catchError(err, sheetName);
